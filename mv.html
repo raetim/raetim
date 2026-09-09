@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@raemin2scence · MV</title>
+
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+<style>
+  @font-face {
+    font-family: 'BookkMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'BookkMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  :root{
+    --ink:#2B3550;
+    --ink-soft:#5B647F;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:#EAE5E2;
+    color:var(--ink);
+    font-family:'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-weight:400;
+    line-height:1.8;
+  }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+  img{
+    -webkit-user-select:none;
+    user-select:none;
+    -webkit-user-drag:none;
+    user-drag:none;
+    pointer-events:auto;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:20px 6vw;
+  }
+  .menu-btn{
+    width:44px;
+    height:44px;
+    border-radius:0;
+    background:rgba(255,255,255,0.35);
+    border:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    cursor:pointer;
+    position:relative;
+    z-index:60;
+  }
+  .menu-btn span{
+    width:18px;
+    height:2px;
+    background:var(--ink);
+    border-radius:2px;
+  }
+  .menu-btn .menu-btn-x{
+    display:none;
+    font-size:24px;
+    line-height:1;
+    color:var(--ink);
+    font-weight:300;
+  }
+  .menu-btn.open span{ display:none; }
+  .menu-btn.open .menu-btn-x{ display:block; }
+
+  .menu-panel{
+    position:fixed;
+    inset:0;
+    z-index:55;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1.6rem;
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(16px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+  }
+  .menu-panel.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .menu-link{
+    font-family:'BookkMyungjo', serif;
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .menu-link:hover{ opacity:0.6; }
+
+  /* ---------- SECTION COMMON ---------- */
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:9rem 6vw 5rem;
+  }
+  .section-title{
+    font-size:1.4rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    margin:0 0 2rem;
+    text-align:center;
+    text-transform:uppercase;
+  }
+
+  /* ---------- 2열 아카이브 갤러리 ---------- */
+  .archive-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1rem 0.8rem;
+  }
+  .archive-item{
+    background:none;
+    border:none;
+    padding:0;
+    text-align:left;
+    color:inherit;
+    cursor:default;
+  }
+  .thumb{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:rgba(43,53,80,0.06);
+    border:1px dashed rgba(43,53,80,0.3);
+    overflow:hidden;
+  }
+  .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb-gradient{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:50%;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+    pointer-events:none;
+  }
+  .thumb-cap{
+    position:absolute;
+    left:0; bottom:0;
+    padding:0.55rem 0.7rem;
+    text-align:left;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+  }
+  .thumb-cap .thumb-date{
+    font-size:0.6rem;
+    color:#ffffff;
+    opacity:0.7;
+    margin-bottom:0.15rem;
+  }
+  .thumb-cap .thumb-title{
+    font-size:0.85rem;
+    font-weight:700;
+    color:#ffffff;
+  }
+  .thumb-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:0.7rem;
+    color:var(--ink-soft);
+    padding:0.6rem;
+  }
+
+  @media (max-width:480px){
+    .archive-grid{ gap:0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="siteNav">
+  <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+    <span class="menu-btn-x">&times;</span>
+  </button>
+</nav>
+
+<div class="menu-panel" id="menuPanel">
+  <a href="raemin2scence.html#rs-profile" class="menu-link">profile</a>
+  <a href="mv.html" class="menu-link">mv</a>
+  <a href="illust.html" class="menu-link">illust</a>
+  <a href="index.html" class="menu-link">@raetim</a>
+</div>
+
+<main>
+  <h1 class="section-title">MV</h1>
+  <!-- TODO : 실제 mv 작업물로 교체해주세요. 항목을 복사해서 계속 추가하시면 됩니다 -->
+  <div class="archive-grid" id="archiveGrid">
+    <button class="archive-item" data-title="??" data-date="20XX.XX">
+      <div class="thumb">
+        <div class="thumb-placeholder">이미지 삽입</div>
+        <div class="thumb-gradient"></div>
+        <div class="thumb-cap">
+          <span class="thumb-date">20XX.XX</span>
+          <span class="thumb-title">??</span>
+        </div>
+      </div>
+    </button>
+    <button class="archive-item" data-title="??" data-date="20XX.XX">
+      <div class="thumb">
+        <div class="thumb-placeholder">이미지 삽입</div>
+        <div class="thumb-gradient"></div>
+        <div class="thumb-cap">
+          <span class="thumb-date">20XX.XX</span>
+          <span class="thumb-title">??</span>
+        </div>
+      </div>
+    </button>
+  </div>
+</main>
+
+<script>
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuPanel = document.getElementById('menuPanel');
+  function closeMenu() {
+    menuPanel.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }
+  menuBtn.addEventListener('click', () => {
+    const willOpen = !menuPanel.classList.contains('open');
+    menuPanel.classList.toggle('open', willOpen);
+    menuBtn.classList.toggle('open', willOpen);
+  });
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  menuPanel.addEventListener('click', (e) => {
+    if (e.target === menuPanel) closeMenu();
+  });
+</script>
+
+</body>
+</html>

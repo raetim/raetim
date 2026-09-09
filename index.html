@@ -10,6 +10,18 @@
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
 <style>
+  @font-face {
+    font-family: 'BookkMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'BookkMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
   :root{
     --ink:#2B3550;
     --ink-soft:#5B647F;
@@ -25,6 +37,12 @@
   }
   a{ color:inherit; text-decoration:none; }
   button{ font-family:inherit; }
+  img{
+    -webkit-user-select:none;
+    user-select:none;
+    -webkit-user-drag:none;
+    user-drag:none;
+  }
 
   /* ===================================================
      배경 : 하늘 일러스트 삽입 위치
@@ -68,7 +86,7 @@
     width:44px;
     height:44px;
     border-radius:0;
-    background:rgba(255,255,255,0.32);
+    background:rgba(255,255,255,0.35);
     border:none;
     display:flex;
     flex-direction:column;
@@ -76,6 +94,8 @@
     justify-content:center;
     gap:5px;
     cursor:pointer;
+    position:relative;
+    z-index:60;
   }
   .menu-btn span{
     width:18px;
@@ -83,39 +103,45 @@
     background:var(--ink);
     border-radius:2px;
   }
+  .menu-btn .menu-btn-x{
+    display:none;
+    font-size:24px;
+    line-height:1;
+    color:var(--ink);
+    font-weight:300;
+  }
+  .menu-btn.open span{ display:none; }
+  .menu-btn.open .menu-btn-x{ display:block; }
 
   .menu-panel{
     position:fixed;
-    top:64px;
-    right:6vw;
-    z-index:49;
+    inset:0;
+    z-index:55;
     display:flex;
     flex-direction:column;
-    background:rgba(255,255,255,0.4);
-    backdrop-filter:blur(10px);
-    border-radius:0;
-    padding:0.6rem;
-    min-width:180px;
+    align-items:center;
+    justify-content:center;
+    gap:1.6rem;
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(16px);
     opacity:0;
-    transform:translateY(-8px);
     pointer-events:none;
-    transition:opacity .2s ease, transform .2s ease;
+    transition:opacity .25s ease;
   }
   .menu-panel.open{
     opacity:1;
-    transform:translateY(0);
     pointer-events:auto;
   }
   .menu-link{
-    padding:0.7rem 0.9rem;
-    font-size:0.9rem;
-    letter-spacing:0.02em;
-    border-radius:0;
+    font-family:'BookkMyungjo', serif;
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
     color:var(--ink);
   }
-  .menu-link:hover{ background:rgba(43,53,80,0.08); }
+  .menu-link:hover{ opacity:0.6; }
   .menu-link.menu-raemin{ color:#FFF3B0; }
-
   /* ---------- HERO (로고 삽입 자리) ---------- */
   .hero{
     position:relative;
@@ -288,15 +314,14 @@
 <nav id="siteNav">
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
     <span></span><span></span><span></span>
+    <span class="menu-btn-x">&times;</span>
   </button>
 </nav>
 
 <div class="menu-panel" id="menuPanel">
   <a href="profile.html" class="menu-link">profile</a>
   <a href="#discography" class="menu-link">discography</a>
-  <a href="contact.html" class="menu-link">contact</a>
-  <!-- TODO : raemin2scence 항목의 실제 연결 위치(섹션 또는 외부 링크)를 알려주시면 연결해드릴게요 -->
-  <a href="#" class="menu-link menu-raemin">raemin2scence</a>
+  <a href="raemin2scence.html" class="menu-link menu-raemin" target="_blank" rel="noopener">@raemin2scence</a>
 </div>
 
 <!-- ============ HERO : 로고 삽입 자리 ============ -->
@@ -337,21 +362,29 @@
 
 </main>
 
-<footer id="contact">
+<footer>
   <img class="footer-logo" src="data:image/png;base64,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" alt="raetim">
 </footer>
 
 <script>
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+
   const menuBtn = document.getElementById('menuBtn');
   const menuPanel = document.getElementById('menuPanel');
-  menuBtn.addEventListener('click', () => menuPanel.classList.toggle('open'));
-  document.querySelectorAll('.menu-link').forEach(link => {
-    link.addEventListener('click', () => menuPanel.classList.remove('open'));
+  function closeMenu() {
+    menuPanel.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }
+  menuBtn.addEventListener('click', () => {
+    const willOpen = !menuPanel.classList.contains('open');
+    menuPanel.classList.toggle('open', willOpen);
+    menuBtn.classList.toggle('open', willOpen);
   });
-  document.addEventListener('click', (e) => {
-    if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
-      menuPanel.classList.remove('open');
-    }
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  menuPanel.addEventListener('click', (e) => {
+    if (e.target === menuPanel) closeMenu();
   });
 
   // 뉴스 / 디스코그래피 캐러셀: 화살표 버튼 + 하단 인디케이터
