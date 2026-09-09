@@ -26,9 +26,10 @@
     --ink-soft:#5B647F;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overscroll-behavior-y:none;}
   body{
     margin:0;
+    overscroll-behavior-y:none;
     min-height:100vh;
     background:#EAE5E2;
     color:var(--ink);
@@ -90,7 +91,7 @@
     align-items:center;
     justify-content:center;
     gap:1.6rem;
-    background:rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.3);
     backdrop-filter:blur(16px);
     opacity:0;
     pointer-events:none;
