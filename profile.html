@@ -57,9 +57,9 @@
   nav{
     position:fixed;
     top:0; left:0; right:0;
-    z-index:50;
+    z-index:60;
     display:flex;
-    justify-content:flex-end;
+    justify-content:flex-start;
     align-items:center;
     padding:20px 6vw;
   }
@@ -84,15 +84,9 @@
     background:var(--ink);
     border-radius:2px;
   }
-  .menu-btn .menu-btn-x{
-    display:none;
-    font-size:24px;
-    line-height:1;
-    color:var(--ink);
-    font-weight:300;
-  }
-  .menu-btn.open span{ display:none; }
-  .menu-btn.open .menu-btn-x{ display:block; }
+  .menu-btn.open span:nth-child(1){ opacity:0; }
+  .menu-btn.open span:nth-child(3){ opacity:0; }
+
 
   .menu-panel{
     position:fixed;
@@ -189,7 +183,6 @@
 <nav id="siteNav">
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
     <span></span><span></span><span></span>
-    <span class="menu-btn-x">&times;</span>
   </button>
 </nav>
 
