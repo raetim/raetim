@@ -44,7 +44,8 @@
     user-select:none;
     -webkit-user-drag:none;
     user-drag:none;
-    pointer-events:auto;
+    -webkit-touch-callout:none;
+    pointer-events:none;
   }
 
   /* ---------- NAV ---------- */
@@ -91,7 +92,7 @@
     align-items:center;
     justify-content:center;
     gap:1.6rem;
-    background:rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.17);
     backdrop-filter:blur(16px);
     opacity:0;
     pointer-events:none;
@@ -133,12 +134,13 @@
     gap:1rem 0.8rem;
   }
   .archive-item{
+    display:block;
     background:none;
     border:none;
     padding:0;
     text-align:left;
     color:inherit;
-    cursor:default;
+    cursor:pointer;
   }
   .thumb{
     position:relative;
@@ -224,28 +226,7 @@
 <main>
   <h1 class="section-title">MV</h1>
   <!-- TODO : 실제 mv 작업물로 교체해주세요. 항목을 복사해서 계속 추가하시면 됩니다 -->
-  <div class="archive-grid" id="archiveGrid">
-    <button class="archive-item" data-title="??" data-date="20XX.XX">
-      <div class="thumb">
-        <div class="thumb-placeholder">이미지 삽입</div>
-        <div class="thumb-gradient"></div>
-        <div class="thumb-cap">
-          <span class="thumb-date">20XX.XX</span>
-          <span class="thumb-title">??</span>
-        </div>
-      </div>
-    </button>
-    <button class="archive-item" data-title="??" data-date="20XX.XX">
-      <div class="thumb">
-        <div class="thumb-placeholder">이미지 삽입</div>
-        <div class="thumb-gradient"></div>
-        <div class="thumb-cap">
-          <span class="thumb-date">20XX.XX</span>
-          <span class="thumb-title">??</span>
-        </div>
-      </div>
-    </button>
-  </div>
+  <div class="archive-grid" id="archiveGrid"></div>
 </main>
 
 <footer>
@@ -272,6 +253,10 @@
   menuPanel.addEventListener('click', (e) => {
     if (e.target === menuPanel) closeMenu();
   });
+</script>
+<script src="works-data.js"></script>
+<script>
+  window.renderWorks('archiveGrid', 'mv');
 </script>
 
 </body>
