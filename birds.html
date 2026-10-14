@@ -216,11 +216,10 @@
     display:block;
   }
   .album-title{
-    font-family:'JejuStoneWall', serif;
-    font-size:1.25rem;
-    font-weight:400;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
+    font-family:'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:0;
     color:var(--ink);
     margin:0 0 0.3rem;
     text-align:left;
@@ -277,14 +276,25 @@
   .stream-links a{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:0.85rem 0;
+    gap:0.7rem;
+    padding:0.7rem 0;
     border-bottom:1px solid rgba(43,53,80,0.14);
     font-size:0.82rem;
     letter-spacing:0.01em;
     color:var(--ink);
   }
   .stream-links a:hover{ opacity:0.55; }
+  .stream-icon{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stream-icon svg{ width:13px; height:13px; fill:#ffffff; }
+  .stream-name{ flex:1; }
   .stream-links a::after{
     content:'↗';
     font-size:0.78rem;
@@ -350,11 +360,26 @@
     </div>
 
     <div class="stream-links">
-      <a href="https://music.apple.com/kr/album/birds-single/6817707113" target="_blank" rel="noopener">Apple Music</a>
-      <a href="https://open.spotify.com/album/61QS6talBOmpTDu3eKuuDo" target="_blank" rel="noopener">Spotify</a>
-      <a href="https://youtube.com/playlist?list=OLAK5uy_kmdjGmu_yupPNvNx15Gw6pRG19ReJHFQk&si=udWbJsjGdDq8vKEC" target="_blank" rel="noopener">YouTube Music</a>
-      <a href="https://music.amazon.com/albums/B0HLL6M6MT?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_EMPGfVVCIzYMeUEDSFlIlfZgE" target="_blank" rel="noopener">Amazon Music</a>
-      <a href="https://kko.to/nAxqvVDNA9" target="_blank" rel="noopener">Melon</a>
+      <a href="https://music.apple.com/kr/album/birds-single/6817707113" target="_blank" rel="noopener">
+        <span class="stream-icon" style="background:#FA233B"><svg viewBox="0 0 24 24"><path d="M9 3v10.55A4 4 0 1 0 11 17V7h6V3H9z"/></svg></span>
+        <span class="stream-name">Apple Music</span>
+      </a>
+      <a href="https://open.spotify.com/album/61QS6talBOmpTDu3eKuuDo" target="_blank" rel="noopener">
+        <span class="stream-icon" style="background:#1ED760"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M6 15.5c3.3-1 7.1-1 10.4 1"/><path d="M5.3 12c3.9-1.2 9-1.2 12.9.8"/><path d="M4.7 8.3c4.5-1.4 10.4-1.4 14.9.9"/></svg></span>
+        <span class="stream-name">Spotify</span>
+      </a>
+      <a href="https://youtube.com/playlist?list=OLAK5uy_kmdjGmu_yupPNvNx15Gw6pRG19ReJHFQk&si=udWbJsjGdDq8vKEC" target="_blank" rel="noopener">
+        <span class="stream-icon" style="background:#FF0000"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="stream-name">YouTube Music</span>
+      </a>
+      <a href="https://music.amazon.com/albums/B0HLL6M6MT?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_EMPGfVVCIzYMeUEDSFlIlfZgE" target="_blank" rel="noopener">
+        <span class="stream-icon" style="background:#00A8E1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="stream-name">Amazon Music</span>
+      </a>
+      <a href="https://kko.to/nAxqvVDNA9" target="_blank" rel="noopener">
+        <span class="stream-icon" style="background:#00CD3C"><svg viewBox="0 0 24 24"><path d="M9 3v10.55A4 4 0 1 0 11 17V7h6V3H9z"/></svg></span>
+        <span class="stream-name">Melon</span>
+      </a>
     </div>
   </div>
 </main>
