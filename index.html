@@ -241,7 +241,7 @@
 
   .gallery-item{
     flex:0 0 auto;
-    width:min(640px, 82vw);
+    width:min(640px, 100%);
     scroll-snap-align:start;
     background:none;
     border:none;
@@ -250,8 +250,8 @@
     text-align:left;
     color:inherit;
   }
-  .disco-item{
-    width:min(220px, 48vw);
+  .gallery-item.disco-item{
+    width:min(200px, 100%);
   }
   .disco-item .thumb{ aspect-ratio:1/1; }
   .disco-item .thumb-cap .thumb-title{ font-size:0.88rem; }
@@ -350,7 +350,8 @@
   .modal-box p{ font-size:0.95rem; margin:0; color:var(--ink); }
 
   @media (max-width:620px){
-    .gallery-item{ width:88vw; }
+    .gallery-item{ width:100%; }
+    .gallery-item.disco-item{ width:min(180px, 100%); }
     .logo-slot{ width:160px; height:160px; }
   }
 </style>
