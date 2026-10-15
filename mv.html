@@ -223,7 +223,10 @@
   }
 
   @media (max-width:480px){
-    .archive-grid{ gap:0.6rem; }
+    .archive-grid{ grid-template-columns:1fr; gap:0.9rem; }
+    .thumb-cap{ padding:0.45rem 0.55rem; }
+    .thumb-cap .thumb-date{ font-size:0.62rem; }
+    .thumb-cap .thumb-title{ font-size:0.85rem; }
   }
 </style>
 </head>
@@ -284,7 +287,7 @@
     });
   });
 </script>
-<script src="works-data.js"></script>
+<script src="works-data.js?v=20261015"></script>
 <script>
   window.renderWorks('archiveGrid', 'mv');
 </script>
