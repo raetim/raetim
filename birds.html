@@ -294,11 +294,45 @@
   @media (max-width:480px){
     .album-card{ padding:1.8rem 1.4rem 1.4rem; }
   }
+
+  /* ---------- 우측 하단 고정 SNS ---------- */
+  .side-social{
+    position:fixed;
+    right:14px;
+    bottom:22px;
+    z-index:40;
+    display:flex;
+    flex-direction:column;
+    gap:0.2rem;
+  }
+  .side-social a{
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .side-social a:hover{ opacity:0.65; transform:translateX(-2px); }
+  .side-social svg{
+    width:26px; height:26px;
+    fill:#ffffff;
+    filter:drop-shadow(0 0 1.5px rgba(43,53,80,0.9)) drop-shadow(0 1px 3px rgba(20,30,60,0.45));
+  }
+  @media (max-width:620px){
+    .side-social{ right:6px; bottom:14px; gap:0; }
+    .side-social a{ width:40px; height:40px; }
+    .side-social svg{ width:23px; height:23px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="sky-bg"></div>
+
+<div class="side-social">
+  <a href="https://youtube.com/@raetim" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 0 0-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 0 0 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 0 0 2-2C22 15.2 22 12 22 12zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+  <a href="https://instagram.com/r.ae.t.im" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.4.46.6.24 1.1.56 1.6 1.06.5.5.82 1 1.06 1.6.24.6.41 1.3.46 2.4.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.3 4.3 0 0 1-1.06 1.6c-.5.5-1 .82-1.6 1.06-.6.24-1.3.41-2.4.46-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.3 4.3 0 0 1-1.6-1.06 4.3 4.3 0 0 1-1.06-1.6c-.24-.6-.41-1.3-.46-2.4C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.46-2.4.24-.6.56-1.1 1.06-1.6.5-.5 1-.82 1.6-1.06.6-.24 1.3-.41 2.4-.46C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg></a>
+  <a href="mailto:raetim@naver.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6zm2 0l8 6 8-6H4zm0 2.4V18h16V8.4l-8 6-8-6z"/></svg></a>
+</div>
+
 
 <nav id="siteNav">
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
