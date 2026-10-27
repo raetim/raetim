@@ -8,6 +8,7 @@
     align-items:center;
     justify-content:center;
     margin-bottom:-9vh;
+    padding-bottom:72px;
   }
 
 .logo-slot{
@@ -84,7 +85,7 @@ section{ padding:2rem 0 3.5rem; }
     font-size:0.68rem;
     color:#ffffff;
     opacity:0.5;
-    margin-bottom:0.2rem;
+    margin-bottom:0;
   }
 
 .thumb-cap .thumb-title{
