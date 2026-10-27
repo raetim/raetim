@@ -1,0 +1,56 @@
+/* 가로 캐러셀 (index, raemin2scence) */
+
+.hscroll{
+    display:flex;
+    justify-content:center;
+    gap:1.2rem;
+    overflow-x:auto;
+    padding:0.4rem 0.2rem 1.2rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+.hscroll::-webkit-scrollbar{ display:none; }
+
+.carousel{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+
+.carousel .hscroll{ flex:1; min-width:0; }
+
+.car-btn:disabled{
+    opacity:0.25;
+    cursor:default;
+  }
+
+.dashes{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:0.4rem;
+  }
+
+.gallery-item{
+    flex:0 0 auto;
+    width:min(640px, 100%);
+    scroll-snap-align:start;
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    text-align:left;
+    color:inherit;
+  }
+
+.thumb-cap{
+    position:absolute;
+    left:0; bottom:0;
+    padding:0.7rem 0.9rem;
+    text-align:left;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+  }

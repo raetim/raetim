@@ -1,4 +1,4 @@
-/* profile.html 전용 스타일 */
+/* raetim 쪽 페이지 공통 (index, profile, album): 하늘 배경, 우측 SNS, 흰 글씨 */
 
 :root{
     --ink:#2B3550;
@@ -18,11 +18,11 @@ body{
     line-height:1.8;
   }
 
-.sky-bg{
+.site-bg{
     position:fixed;
     inset:0;
     z-index:-2;
-    background-image:url('../images/sky-bg.jpg');
+    background-image:url('../../images/sky-bg.jpg');
     background-size:cover;
     background-position:center;
     background-color:#DCEBF5;
@@ -36,31 +36,6 @@ body{
     margin:0 0 1.6rem;
     text-align:center;
     text-transform:uppercase;
-  }
-
-main{
-    max-width:640px;
-    margin:0 auto;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    padding:9rem 6vw 4rem;
-    text-align:center;
-  }
-
-.profile-title{
-    font-size:1.05rem;
-    font-weight:700;
-    letter-spacing:0.02em;
-    margin:0 0 1.2rem;
-  }
-
-.profile-text{
-    font-size:0.78rem;
-    color:#ffffff;
-    margin:0 0 2.2rem;
   }
 
 .side-social{

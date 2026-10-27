@@ -21,8 +21,8 @@
     ],
     raemin: [
       ['main', 'raemin2scence.html', ''],
-      ['mv', 'mv.html', ''],
-      ['illust', 'illust.html', ''],
+      ['mv', 'works.html?type=mv', ''],
+      ['illust', 'works.html?type=illust', ''],
       ['@raetim', 'index.html', 'menu-raetim']
     ]
   };
@@ -42,7 +42,7 @@
 
   var html = '';
   if (site === 'raetim') {
-    html += '<div class="sky-bg"></div>';
+    html += '<div class="site-bg"></div>';
     html += '<div class="side-social">' + SNS.map(function (s) {
       return '<a href="' + s.href + '" aria-label="' + s.label + '"' +
         (s.ext ? ' target="_blank" rel="noopener"' : '') +
