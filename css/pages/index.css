@@ -43,6 +43,8 @@ section{ padding:2rem 0 3.5rem; }
 
 #news{ padding-bottom:7rem; }
 
+#discography .car-btn{ display:none; }
+
 .car-btn{ color:#ffffff; }
 
 .dashes .dash{ background:rgba(255,255,255,0.35); }
