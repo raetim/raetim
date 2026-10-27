@@ -1,0 +1,223 @@
+/* raemin2scence.html 전용 스타일 */
+
+:root{
+    --ink:#3B6479;
+    --ink-soft:#3B6479;
+  }
+
+html{scroll-behavior:smooth; overscroll-behavior-y:none; background:#EAE5E2; height:100%; overflow:hidden;}
+
+body{
+    margin:0;
+    overscroll-behavior-y:none;
+    height:100%;
+    overflow:hidden;
+    background:#EAE5E2;
+    color:var(--ink);
+    font-family:'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-weight:400;
+    line-height:1.8;
+  }
+
+.rs-hero{
+    max-width:560px;
+    margin:0 auto;
+    padding:7rem 6vw 2rem;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0.6rem;
+  }
+
+.rs-logo{
+    width:100%;
+    max-width:460px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+  }
+
+.rs-social{
+    display:flex;
+    justify-content:flex-end;
+    gap:0.8rem;
+  }
+
+.rs-social a{
+    width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(43,53,80,0.35);
+    border-radius:50%;
+  }
+
+.rs-social svg{ width:14px; height:14px; fill:var(--ink); }
+
+main{
+    max-width:900px;
+    margin:0 auto;
+    padding:1rem 6vw 5rem;
+  }
+
+section{ padding:1.5rem 0; }
+
+.section-title{
+    font-family:'JejuStoneWall', serif;
+    font-size:1.3rem;
+    font-weight:400;
+    letter-spacing:0.03em;
+    margin:0 0 1.6rem;
+    text-align:center;
+    text-transform:uppercase;
+  }
+
+.hscroll{
+    display:flex;
+    justify-content:center;
+    gap:1.2rem;
+    overflow-x:auto;
+    padding:0.4rem 0.2rem 1.2rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+.hscroll::-webkit-scrollbar{ display:none; }
+
+.carousel{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+
+.carousel .hscroll{ flex:1; min-width:0; }
+
+.car-btn{
+    flex:0 0 auto;
+    background:none;
+    border:none;
+    color:var(--ink);
+    font-size:2rem;
+    line-height:1;
+    padding:0 0.3rem;
+    cursor:pointer;
+  }
+
+.car-btn:disabled{ opacity:0.25; cursor:default; }
+
+.dashes{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:0.4rem;
+  }
+
+.dashes .dash{
+    width:18px;
+    height:2px;
+    background:rgba(43,53,80,0.25);
+  }
+
+.dashes .dash.active{ background:var(--ink); }
+
+.gallery-item{
+    flex:0 0 auto;
+    width:min(640px, 100%);
+    scroll-snap-align:start;
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    text-align:left;
+    color:inherit;
+  }
+
+.thumb{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:rgba(43,53,80,0.06);
+    overflow:hidden;
+  }
+
+.thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.thumb-bg{
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+
+.thumb-gradient{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:55%;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+    pointer-events:none;
+  }
+
+.thumb-cap{
+    position:absolute;
+    left:0; bottom:0;
+    padding:0.7rem 0.9rem;
+    text-align:left;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+  }
+
+.thumb-cap .thumb-date{
+    font-size:0.68rem;
+    color:#ffffff;
+    opacity:0.7;
+    margin-bottom:0.2rem;
+  }
+
+.thumb-cap .thumb-title{
+    font-size:1.05rem;
+    font-weight:700;
+    color:#ffffff;
+  }
+
+.thumb-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    padding:1rem;
+  }
+
+.archive-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1rem 0.8rem;
+  }
+
+.archive-item{
+    display:block;
+    background:none;
+    border:none;
+    padding:0;
+    text-align:left;
+    color:inherit;
+    cursor:pointer;
+  }
+
+@media (max-width:620px){
+    .gallery-item{ width:100%; }
+    .rs-logo{ width:78%; }
+  }
+
+@media (max-width:480px){
+    .archive-grid{ grid-template-columns:1fr; gap:0.9rem; }
+    .thumb-cap{ padding:0.45rem 0.55rem; }
+    .thumb-cap .thumb-date{ font-size:0.62rem; margin-bottom:0.1rem; }
+    .thumb-cap .thumb-title{ font-size:0.85rem; }
+  }
