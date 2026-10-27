@@ -5,6 +5,6 @@
   var type = new URLSearchParams(location.search).get('type');
   if (!TITLES[type]) type = 'mv';
   document.getElementById('worksTitle').textContent = TITLES[type];
-  document.title = '@raemin2scence · ' + TITLES[type];
+  document.title = 'raemin2scence';
   window.renderWorks('archiveGrid', type);
 })();

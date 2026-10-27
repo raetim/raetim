@@ -7,7 +7,7 @@
   var card = document.getElementById('albumCard');
   if (!album) { card.textContent = '앨범을 찾을 수 없습니다.'; return; }
 
-  document.title = 'raetim · ' + album.title;
+  document.title = 'raetim';
   var html = '<div class="album-cover"><img src="' + esc(album.cover) + '" alt="' + esc(album.title) + '"></div>' +
     '<h1 class="album-title">' + esc(album.title) + '</h1>' +
     '<p class="album-format">' + esc(album.format) + '</p>' +
