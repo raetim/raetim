@@ -67,3 +67,6 @@ body{
     .side-social a{ width:40px; height:40px; }
     .side-social svg{ width:23px; height:23px; }
   }
+
+/* 메뉴 아이콘: 파란 배경 위에서는 흰색 */
+.menu-btn span{ background:#ffffff; }
