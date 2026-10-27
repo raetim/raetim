@@ -21,6 +21,16 @@
 
 .carousel .hscroll{ flex:1; min-width:0; }
 
+.car-btn{
+    flex:0 0 auto;
+    background:none;
+    border:none;
+    font-size:4rem;
+    line-height:1;
+    padding:0 0.2rem;
+    cursor:pointer;
+  }
+
 .car-btn:disabled{
     opacity:0.25;
     cursor:default;
@@ -29,8 +39,19 @@
 .dashes{
     display:flex;
     justify-content:center;
-    gap:6px;
+    gap:8px;
     margin-top:0.4rem;
+  }
+
+.dashes .dash{
+    width:34px;
+    height:4px;
+  }
+
+@media (max-width:620px){
+    .car-btn{ font-size:3rem; padding:0; }
+    .carousel{ gap:0.3rem; }
+    .dashes .dash{ width:28px; }
   }
 
 .gallery-item{

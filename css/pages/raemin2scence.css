@@ -3,7 +3,8 @@
 .rs-hero{
     max-width:560px;
     margin:0 auto;
-    padding:7rem 6vw 2rem;
+    /* raetim 메인 로고와 같은 높이: 로고 세로 중심 = max(19vh,130px) */
+    padding:max(4rem, calc(max(19vh, 130px) - min(460px, min(560px, 100vw) - 12vw) * 0.1845)) 6vw 2rem;
     display:flex;
     flex-direction:column;
     align-items:stretch;
@@ -51,22 +52,9 @@ section{ padding:1.5rem 0; }
     text-transform:uppercase;
   }
 
-.car-btn{
-    flex:0 0 auto;
-    background:none;
-    border:none;
-    color:var(--ink);
-    font-size:2rem;
-    line-height:1;
-    padding:0 0.3rem;
-    cursor:pointer;
-  }
+.car-btn{ color:var(--ink); }
 
-.dashes .dash{
-    width:18px;
-    height:2px;
-    background:rgba(43,53,80,0.25);
-  }
+.dashes .dash{ background:rgba(43,53,80,0.25); }
 
 .dashes .dash.active{ background:var(--ink); }
 
@@ -106,6 +94,7 @@ section{ padding:1.5rem 0; }
 @media (max-width:620px){
     .gallery-item{ width:100%; }
     .rs-logo{ width:78%; }
+    .rs-hero{ padding-top:max(4rem, calc(max(19vh, 130px) - (100vw - 12vw) * 0.78 * 0.1845)); }
   }
 
 @media (max-width:480px){
