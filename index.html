@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>raetim</title>
+
+<!-- Pretendard -->
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+<link rel="stylesheet" href="css/common.css?v=20261027">
+<link rel="stylesheet" href="css/index.css?v=20261027">
+</head>
+<body data-site="raetim" data-home>
+
+<!-- ============ HERO : 로고 삽입 자리 ============ -->
+<div class="scroll-wrap">
+<header class="hero">
+  <img class="logo-img" src="images/logo-raetim.png" alt="raetim">
+</header>
+
+<main>
+
+  <!-- ============ NEWS ============ -->
+  <section id="news">
+    <h2 class="section-title">news</h2>
+    <div class="carousel">
+      <button class="car-btn prev" data-target="newsScroll" aria-label="이전">&#8249;</button>
+      <div class="hscroll" id="newsScroll">
+      <!-- 소식 1개만 유지. 제목/날짜/이미지가 정해지면 교체해주세요 -->
+      <a class="gallery-item news-item" href="https://youtu.be/O1F0fBXNkLs?si=iqzYcG6KrRinkM3H" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/news-birds-mv.gif" alt="새야 (Birds) MV Released"><div class="thumb-gradient"></div><div class="thumb-cap"><span class="thumb-date">2026.10.08</span><span class="thumb-title">새야 (Birds) MV Released</span></div></div>
+      </a>
+    </div>
+      <button class="car-btn next" data-target="newsScroll" aria-label="다음">&#8250;</button>
+    </div>
+    <div class="dashes" id="newsDashes"></div>
+  </section>
+
+  <!-- ============ DISCOGRAPHY ============ -->
+  <section id="discography">
+    <h2 class="section-title">discography</h2>
+    <div class="carousel">
+      <button class="car-btn prev" data-target="discoScroll" aria-label="이전">&#8249;</button>
+      <div class="hscroll" id="discoScroll">
+      <a class="gallery-item disco-item" href="birds.html">
+        <div class="thumb"><img src="images/birds-cover.jpg" alt="새야 (Birds)"><div class="thumb-gradient"></div><div class="thumb-cap"><span class="thumb-date">Digital Single</span><span class="thumb-title">새야 (Birds)</span></div></div>
+      </a>
+    </div>
+      <button class="car-btn next" data-target="discoScroll" aria-label="다음">&#8250;</button>
+    </div>
+    <div class="dashes" id="discoDashes"></div>
+  </section>
+
+</main>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="itemModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <span class="date" id="modalDate"></span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script src="js/layout.js?v=20261027"></script>
+<script src="js/index.js?v=20261027"></script>
+
+</body>
+</html>
