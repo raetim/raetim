@@ -40,8 +40,8 @@ body{
 
 .side-social{
     position:fixed;
-    right:14px;
-    bottom:22px;
+    right:max(2px, calc(6vw - 20px));
+    top:20px;
     z-index:40;
     display:flex;
     flex-direction:column;
@@ -63,7 +63,7 @@ body{
   }
 
 @media (max-width:620px){
-    .side-social{ right:6px; bottom:14px; gap:0; }
+    .side-social{ right:max(2px, calc(6vw - 19px)); top:22px; gap:0; }
     .side-social a{ width:40px; height:40px; }
     .side-social svg{ width:23px; height:23px; }
   }
