@@ -43,16 +43,10 @@
   var html = '';
   if (site === 'raetim') {
     html += '<div class="site-bg"></div>';
-    /* 손그림 같은 거친 가장자리 + 마커가 마른 듯한 질감 */
-    html += '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>' +
-      '<filter id="snsRough" x="-15%" y="-15%" width="130%" height="130%">' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="2" result="warp"/>' +
-      '<feDisplacementMap in="SourceGraphic" in2="warp" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>' +
-      '</filter></defs></svg>';
     html += '<div class="side-social">' + SNS.map(function (s) {
       return '<a href="' + s.href + '" aria-label="' + s.label + '"' +
         (s.ext ? ' target="_blank" rel="noopener"' : '') +
-        '><svg viewBox="0 0 24 24"><g filter="url(#snsRough)">' + s.svg + '</g></svg></a>';
+        '><svg viewBox="0 0 24 24">' + s.svg + '</svg></a>';
     }).join('') + '</div>';
   }
   html += '<nav id="siteNav"><button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">' +
