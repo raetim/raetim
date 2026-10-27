@@ -125,3 +125,6 @@ footer{
 /* 썸네일 캡션: 날짜/포맷 글자와 제목 사이를 좁게 (모든 사이트 공통) */
 .thumb-cap .thumb-date{ line-height:1.1; padding-left:2px; }
 .thumb-cap .thumb-title{ line-height:1.25; }
+
+/* 캡션 전체를 왼쪽으로 1px */
+.thumb-cap{ margin-left:-1px; }
