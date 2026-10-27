@@ -6,13 +6,17 @@ main{
     min-height:100vh;
     min-height:100dvh;
     box-sizing:border-box;
-    padding:1.3rem 6vw 5rem;
+    padding:9rem 6vw 5rem;
+    position:relative;
   }
 
 .works-logo-link{
+    position:absolute;
+    top:1.3rem;
+    left:50%;
+    transform:translateX(-50%);
     display:block;
     width:150px;
-    margin:0 auto 1.6rem;
   }
 
 .works-logo{ display:block; width:100%; height:auto; }
