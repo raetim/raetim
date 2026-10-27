@@ -21,8 +21,8 @@
     ],
     raemin: [
       ['main', 'raemin2scence.html', ''],
-      ['mv', 'works.html?type=mv', ''],
-      ['illust', 'works.html?type=illust', ''],
+      ['mv', 'works.html?type=mv&v=20261027l', ''],
+      ['illust', 'works.html?type=illust&v=20261027l', ''],
       ['@raetim', 'index.html', 'menu-raetim']
     ]
   };
