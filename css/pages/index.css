@@ -45,6 +45,8 @@ section{ padding:2rem 0 3.5rem; }
 
 #discography .car-btn{ display:none; }
 
+#discoDashes{ display:none; }
+
 .car-btn{ color:#ffffff; }
 
 .dashes .dash{ background:rgba(255,255,255,0.35); }

@@ -29,9 +29,9 @@
 
   /* raetim 사이트 우측 하단 고정 SNS */
   var SNS = [
-    {href:'https://youtube.com/@raetim', label:'YouTube', ext:true, svg:'M22 12s0-3.2-.4-4.7a2.8 2.8 0 0 0-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 0 0 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 0 0 2-2C22 15.2 22 12 22 12zM10 15.5v-7l6 3.5-6 3.5z'},
-    {href:'https://instagram.com/r.ae.t.im', label:'Instagram', ext:true, svg:'M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.4.46.6.24 1.1.56 1.6 1.06.5.5.82 1 1.06 1.6.24.6.41 1.3.46 2.4.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.3 4.3 0 0 1-1.06 1.6c-.5.5-1 .82-1.6 1.06-.6.24-1.3.41-2.4.46-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.3 4.3 0 0 1-1.6-1.06 4.3 4.3 0 0 1-1.06-1.6c-.24-.6-.41-1.3-.46-2.4C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.46-2.4.24-.6.56-1.1 1.06-1.6.5-.5 1-.82 1.6-1.06.6-.24 1.3-.41 2.4-.46C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z'},
-    {href:'mailto:raetim@naver.com', label:'Email', ext:false, svg:'M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6zm2 0l8 6 8-6H4zm0 2.4V18h16V8.4l-8 6-8-6z'}
+    {href:'https://youtube.com/@raetim', label:'YouTube', ext:true, svg:'<path d="M3.2 7.2Q3.2 5.6 4.8 5.4C9 4.8 15 4.8 19.2 5.4Q20.8 5.6 20.8 7.2L20.8 16.8Q20.8 18.4 19.2 18.6C15 19.2 9 19.2 4.8 18.6Q3.2 18.4 3.2 16.8Z"/><path d="M10 9.4L15 12L10 14.6Z"/>'},
+    {href:'https://instagram.com/r.ae.t.im', label:'Instagram', ext:true, svg:'<path d="M7.2 3.5H16.8A3.7 3.7 0 0 1 20.5 7.2V16.8A3.7 3.7 0 0 1 16.8 20.5H7.2A3.7 3.7 0 0 1 3.5 16.8V7.2A3.7 3.7 0 0 1 7.2 3.5Z"/><circle cx="12" cy="12" r="4.1"/><path d="M17 7.1L17.05 7.1"/>'},
+    {href:'mailto:raetim@naver.com', label:'Email', ext:false, svg:'<path d="M3.4 5.8H20.6V18.2H3.4Z"/><path d="M3.6 6.4L12 12.8L20.4 6.4"/>'}
   ];
 
   var items = MENUS[site].slice();
@@ -46,16 +46,13 @@
     /* 손그림 같은 거친 가장자리 + 마커가 마른 듯한 질감 */
     html += '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>' +
       '<filter id="snsRough" x="-15%" y="-15%" width="130%" height="130%">' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="4" result="warp"/>' +
-      '<feDisplacementMap in="SourceGraphic" in2="warp" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="wobbly"/>' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="9" result="grain"/>' +
-      '<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.5 0 0 0 0.2" result="grainA"/>' +
-      '<feComposite in="wobbly" in2="grainA" operator="in"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="2" result="warp"/>' +
+      '<feDisplacementMap in="SourceGraphic" in2="warp" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>' +
       '</filter></defs></svg>';
     html += '<div class="side-social">' + SNS.map(function (s) {
       return '<a href="' + s.href + '" aria-label="' + s.label + '"' +
         (s.ext ? ' target="_blank" rel="noopener"' : '') +
-        '><svg viewBox="0 0 24 24"><path filter="url(#snsRough)" d="' + s.svg + '"/></svg></a>';
+        '><svg viewBox="0 0 24 24"><g filter="url(#snsRough)">' + s.svg + '</g></svg></a>';
     }).join('') + '</div>';
   }
   html += '<nav id="siteNav"><button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">' +
