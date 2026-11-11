@@ -269,7 +269,6 @@ body[data-intro].in-content .scroll-wrap{ transform:none; }
   }
 
 .profile-intro{
-    word-break:keep-all;
     font-size:0.82rem;
     color:#ffffff;
     margin:0 0 1.5rem;
