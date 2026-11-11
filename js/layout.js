@@ -37,8 +37,9 @@
 
   /* raetim 사이트 우측 하단 고정 SNS */
   var SNS = [
-    {href:'https://youtube.com/@raetim', label:'YouTube', ext:true, svg:'<path d="M3.2 7.2Q3.2 5.6 4.8 5.4C9 4.8 15 4.8 19.2 5.4Q20.8 5.6 20.8 7.2L20.8 16.8Q20.8 18.4 19.2 18.6C15 19.2 9 19.2 4.8 18.6Q3.2 18.4 3.2 16.8Z"/><path d="M10 9.4L15 12L10 14.6Z"/>'},
     {href:'https://instagram.com/r.ae.t.im', label:'Instagram', ext:true, svg:'<path d="M7.2 3.5H16.8A3.7 3.7 0 0 1 20.5 7.2V16.8A3.7 3.7 0 0 1 16.8 20.5H7.2A3.7 3.7 0 0 1 3.5 16.8V7.2A3.7 3.7 0 0 1 7.2 3.5Z"/><circle cx="12" cy="12" r="4.1"/><path d="M17 7.1L17.05 7.1"/>'},
+    {href:'https://youtube.com/@raetim', label:'YouTube', ext:true, svg:'<path d="M3.2 7.2Q3.2 5.6 4.8 5.4C9 4.8 15 4.8 19.2 5.4Q20.8 5.6 20.8 7.2L20.8 16.8Q20.8 18.4 19.2 18.6C15 19.2 9 19.2 4.8 18.6Q3.2 18.4 3.2 16.8Z"/><path d="M10 9.4L15 12L10 14.6Z"/>'},
+    {href:'https://soundcloud.com/raetim', label:'SoundCloud', ext:true, svg:'<path d="M3.2 13.4V16.6"/><path d="M5.6 11.8V17.2"/><path d="M8 18V10"/><path d="M8 10Q10 7.8 13.2 8.2Q15.6 8.5 16.4 10.6Q20.8 10.2 20.8 14.2Q20.6 18 17 18H8"/>'},
     {href:'mailto:raetim@naver.com', label:'Email', ext:false, svg:'<path d="M3.4 5.8H20.6V18.2H3.4Z"/><path d="M3.6 6.4L12 12.8L20.4 6.4"/>'}
   ];
 
