@@ -167,7 +167,7 @@ footer .copyright{
     --mk:200%;
     -webkit-mask-image:linear-gradient(to bottom, #000 calc(var(--mk) - 40%), transparent var(--mk));
     mask-image:linear-gradient(to bottom, #000 calc(var(--mk) - 40%), transparent var(--mk));
-    transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1), --mk .9s ease;
+    transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1), --mk .35s ease-out;
   }
 
 @property --mk{ syntax:'<percentage>'; inherits:false; initial-value:200%; }
@@ -184,7 +184,7 @@ footer .copyright{
     display:block;
   }
 
-body.in-content .intro{ opacity:0; transform:translateY(-14vh); pointer-events:none; --mk:55%; }
+body.in-content .intro{ opacity:0; transform:translateY(-14vh); pointer-events:none; --mk:75%; }
 
 body[data-intro] .scroll-wrap{ transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1); }
 
