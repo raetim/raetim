@@ -165,10 +165,10 @@ footer{
     .side-logo img{ display:block; width:100%; height:auto; }
 
     .side-menu{
-        flex:1;
+        flex:none;
         display:flex;
         flex-direction:column;
-        justify-content:space-between;
+        gap:1.9rem;
         margin-top:clamp(2.4rem, 9vh, 5rem);
         position:static;
         padding:0;
@@ -179,7 +179,7 @@ footer{
 
     .side-link{
         font-family:'Gimje', 'JejuStoneWall', serif;
-        font-size:1.15rem;
+        font-size:1rem;
         letter-spacing:0.06em;
         white-space:nowrap;
         text-transform:uppercase;

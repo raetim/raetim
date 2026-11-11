@@ -24,10 +24,9 @@
     ],
     raemin: [
       ['main', 'raemin2scence.html', '', 'panel'],
-      ['works', 'raemin2scence.html#rs-works', '', 'top'],
-      ['mv', 'works.html?type=mv&v=20261027s', '', 'bottom'],
-      ['illust', 'works.html?type=illust&v=20261027s', '', 'bottom'],
-      ['@raetim', 'index.html', 'menu-raetim', 'bottom']
+      ['mv', 'works.html?type=mv&v=20261027s', '', 'top'],
+      ['illust', 'works.html?type=illust&v=20261027s', '', 'top'],
+      ['@raetim', 'index.html', 'menu-raetim', 'top']
     ]
   };
   var homeHref = site === 'raetim' ? 'index.html' : 'raemin2scence.html';

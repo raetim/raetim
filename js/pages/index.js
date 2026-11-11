@@ -110,8 +110,6 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
     else if (state === 'content' && up && scroller.scrollTop <= 0) { e.preventDefault(); leave(); }
   });
 
-  document.getElementById('introHint').addEventListener('click', function () { enter(); });
-
   /* 사이드바/모바일 메뉴의 #주소 링크 */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
