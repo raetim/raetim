@@ -184,6 +184,11 @@ footer .copyright{
     display:block;
   }
 
+/* 세로 화면(모바일): 새 얼굴이 정확히 가운데 오도록 보정 */
+@media (max-aspect-ratio:1/1){
+    .intro-img{ object-position:48.6% bottom; }
+  }
+
 body.in-content .intro{ opacity:0; transform:translateY(-14vh); pointer-events:none; --mk:70%; }
 
 body[data-intro] .scroll-wrap{ transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1); }
