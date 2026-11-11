@@ -11,21 +11,30 @@
   var site = body.dataset.site || 'raetim';
   var isHome = body.hasAttribute('data-home');
 
-  /* [이름, 주소, 추가 class] */
+  /* [이름, 주소, 추가 class, 위치]
+     위치: top = 메인 화면 안의 목록(사이드바 위쪽), bottom = 따로 열리는 화면(사이드바 아래쪽),
+           panel = 모바일 메뉴에만 나오는 "main" */
   var MENUS = {
     raetim: [
-      ['main', 'index.html', ''],
-      ['profile', 'profile.html', ''],
-      ['discography', 'index.html#discography', ''],
-      ['@raemin2scence', 'raemin2scence.html', 'menu-raemin']
+      ['main', 'index.html', '', 'panel'],
+      ['news', 'index.html#news', '', 'top'],
+      ['discography', 'index.html#discography', '', 'top'],
+      ['profile', 'profile.html', '', 'bottom'],
+      ['@raemin2scence', 'raemin2scence.html', 'menu-raemin', 'bottom']
     ],
     raemin: [
-      ['main', 'raemin2scence.html', ''],
-      ['mv', 'works.html?type=mv&v=20261027s', ''],
-      ['illust', 'works.html?type=illust&v=20261027s', ''],
-      ['@raetim', 'index.html', 'menu-raetim']
+      ['main', 'raemin2scence.html', '', 'panel'],
+      ['works', 'raemin2scence.html#rs-works', '', 'top'],
+      ['mv', 'works.html?type=mv&v=20261027s', '', 'bottom'],
+      ['illust', 'works.html?type=illust&v=20261027s', '', 'bottom'],
+      ['@raetim', 'index.html', 'menu-raetim', 'bottom']
     ]
   };
+  var homeHref = site === 'raetim' ? 'index.html' : 'raemin2scence.html';
+  /* 같은 페이지 안의 이동은 #주소 만 쓰도록 바꿔줍니다 */
+  function localize(href) {
+    return (isHome && href.indexOf(homeHref + '#') === 0) ? href.slice(homeHref.length) : href;
+  }
 
   /* raetim 사이트 우측 하단 고정 SNS */
   var SNS = [
@@ -34,11 +43,7 @@
     {href:'mailto:raetim@naver.com', label:'Email', ext:false, svg:'<path d="M3.4 5.8H20.6V18.2H3.4Z"/><path d="M3.6 6.4L12 12.8L20.4 6.4"/>'}
   ];
 
-  var items = MENUS[site].slice();
-  if (isHome) {
-    items.shift();                                  /* 메인 페이지에서는 main 숨김 */
-    if (site === 'raetim') items[1][1] = '#discography';   /* 같은 페이지 안에서 이동 */
-  }
+  var items = MENUS[site].filter(function (m) { return !(isHome && m[3] === 'panel'); });
 
   var html = '';
   if (site === 'raetim') {
@@ -58,28 +63,45 @@
   html += '<nav id="siteNav"><button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">' +
     '<span></span><span></span><span></span></button></nav>';
   html += '<div class="menu-panel" id="menuPanel">' + items.map(function (m) {
-    return '<a href="' + m[1] + '" class="menu-link' + (m[2] ? ' ' + m[2] : '') + '">' + m[0] + '</a>';
+    return '<a href="' + localize(m[1]) + '" class="menu-link' + (m[2] ? ' ' + m[2] : '') + '">' + m[0] + '</a>';
   }).join('') + '</div>';
-  /* 왼쪽 사이드바 (넓은 화면에서만 보임). 메인으로 가는 길은 로고가 맡습니다. */
-  var homeHref = site === 'raetim' ? 'index.html' : 'raemin2scence.html';
+  /* 왼쪽 사이드바 (넓은 화면에서만 보임): 위쪽 = 메인 화면 안의 목록, 아래쪽 = 따로 열리는 화면 */
   var logoSrc = site === 'raetim' ? 'images/logo-raetim.png' : 'images/logo-raemin2sence.png';
-  var sideItems = MENUS[site].slice(1);
-  if (isHome && site === 'raetim') sideItems[1] = ['discography', '#discography', ''];
   var here = location.pathname.split('/').pop() || homeHref;
+  function sideLinks(pos) {
+    return MENUS[site].filter(function (m) { return m[3] === pos; }).map(function (m) {
+      var cur = m[1].indexOf('#') < 0 && m[1].split('?')[0] === here;
+      return '<a href="' + localize(m[1]) + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
+        (cur ? ' is-current' : '') + '">' + m[0] + '</a>';
+    }).join('');
+  }
   html += '<aside class="site-sidebar" id="siteSidebar">' +
     '<a class="side-logo" href="' + (isHome ? '#' : homeHref) + '" aria-label="' + site + '">' +
     '<img src="' + logoSrc + '" alt="' + site + '"></a>' +
-    '<div class="side-menu">' + sideItems.map(function (m) {
-      var cur = m[1].split('#')[0].split('?')[0] === here && m[1].indexOf('#') < 0;
-      return '<a href="' + m[1] + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
-        (cur ? ' is-current' : '') + '">' + m[0] + '</a>';
-    }).join('') + '</div></aside>';
+    '<div class="side-menu">' +
+    '<div class="side-group">' + sideLinks('top') + '</div>' +
+    '<div class="side-group side-group-bottom">' + sideLinks('bottom') + '</div>' +
+    '</div></aside>';
   body.insertAdjacentHTML('afterbegin', html);
 
   /* 푸터: 스크롤 영역 맨 아래 */
   var wrap = document.querySelector('.scroll-wrap') || body;
   wrap.insertAdjacentHTML('beforeend',
     '<footer><img class="footer-logo" src="images/footer-logo.png" alt="raetim"></footer>');
+
+  /* 로딩 화면: 모든 리소스가 불러와지면 서서히 사라짐 (최소 0.9초 유지) */
+  var loader = document.getElementById('pageLoader');
+  if (loader) {
+    var hideLoader = function () {
+      var wait = Math.max(0, 900 - (window.performance ? performance.now() : 0));
+      setTimeout(function () {
+        loader.classList.add('hide');
+        setTimeout(function () { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 800);
+      }, wait);
+    };
+    if (document.readyState === 'complete') hideLoader();
+    else window.addEventListener('load', hideLoader);
+  }
 
   /* 메뉴 동작 */
   document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
