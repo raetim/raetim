@@ -3,6 +3,8 @@
 :root{
     --ink:#3B6479;
     --ink-soft:#3B6479;
+    --side-bg:#DDD6D1;
+    --side-ink:#3B6479;
   }
 
 html{scroll-behavior:smooth; overscroll-behavior-y:none; background:#EAE5E2; height:100%; overflow:hidden;}

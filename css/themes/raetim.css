@@ -3,6 +3,8 @@
 :root{
     --ink:#2B3550;
     --ink-soft:#5B647F;
+    --side-bg:#34548f;
+    --side-ink:#ffffff;
   }
 
 html{scroll-behavior:smooth; overscroll-behavior-y:none; height:100%; overflow:hidden;}
@@ -63,6 +65,11 @@ body{
     stroke-width:1.4;
     stroke-linecap:round;
     stroke-linejoin:round;
+  }
+
+@media (min-width:900px){
+    .site-bg{ left:var(--side-w); }
+    .side-social{ right:28px; }
   }
 
 @media (max-width:620px){

@@ -60,6 +60,20 @@
   html += '<div class="menu-panel" id="menuPanel">' + items.map(function (m) {
     return '<a href="' + m[1] + '" class="menu-link' + (m[2] ? ' ' + m[2] : '') + '">' + m[0] + '</a>';
   }).join('') + '</div>';
+  /* 왼쪽 사이드바 (넓은 화면에서만 보임). 메인으로 가는 길은 로고가 맡습니다. */
+  var homeHref = site === 'raetim' ? 'index.html' : 'raemin2scence.html';
+  var logoSrc = site === 'raetim' ? 'images/logo-raetim.png' : 'images/logo-raemin2sence.png';
+  var sideItems = MENUS[site].slice(1);
+  if (isHome && site === 'raetim') sideItems[1] = ['discography', '#discography', ''];
+  var here = location.pathname.split('/').pop() || homeHref;
+  html += '<aside class="site-sidebar" id="siteSidebar">' +
+    '<a class="side-logo" href="' + (isHome ? '#' : homeHref) + '" aria-label="' + site + '">' +
+    '<img src="' + logoSrc + '" alt="' + site + '"></a>' +
+    '<div class="side-menu">' + sideItems.map(function (m) {
+      var cur = m[1].split('#')[0].split('?')[0] === here && m[1].indexOf('#') < 0;
+      return '<a href="' + m[1] + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
+        (cur ? ' is-current' : '') + '">' + m[0] + '</a>';
+    }).join('') + '</div></aside>';
   body.insertAdjacentHTML('afterbegin', html);
 
   /* 푸터: 스크롤 영역 맨 아래 */

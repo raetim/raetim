@@ -128,3 +128,59 @@ footer{
 
 /* 캡션 전체를 왼쪽으로 1px */
 .thumb-cap{ margin-left:-1px; }
+
+/* ------------------------------------------------------------
+   사이드바 틀 (넓은 화면: 왼쪽 고정 메뉴 / 좁은 화면: 기존 햄버거 메뉴)
+------------------------------------------------------------ */
+:root{ --side-w:clamp(260px, 24vw, 340px); }
+
+.site-sidebar{ display:none; }
+
+@media (min-width:900px){
+    .site-sidebar{
+        display:flex;
+        flex-direction:column;
+        position:fixed;
+        top:0; left:0; bottom:0;
+        width:var(--side-w);
+        z-index:50;
+        padding:48px 32px 40px 52px;
+        background:var(--side-bg);
+        color:var(--side-ink);
+        overflow-y:auto;
+      }
+
+    .scroll-wrap{ margin-left:var(--side-w); }
+
+    #siteNav, .menu-panel{ display:none !important; }
+
+    .side-logo{ display:block; width:100%; max-width:210px; }
+    .side-logo img{ display:block; width:100%; height:auto; }
+
+    .side-menu{
+        display:flex;
+        flex-direction:column;
+        gap:1.9rem;
+        margin-top:clamp(2.4rem, 9vh, 5rem);
+        position:static;
+        padding:0;
+        background:none;
+      }
+
+    .side-link{
+        font-family:'JejuStoneWall', serif;
+        font-size:1.05rem;
+        letter-spacing:0.14em;
+        text-transform:uppercase;
+        color:var(--side-ink);
+        opacity:0.82;
+        transition:opacity .2s ease, transform .2s ease;
+      }
+
+    .side-link:hover{ opacity:1; transform:translateX(3px); }
+
+    .side-link.is-current{ opacity:1; text-decoration:underline; text-underline-offset:0.45em; }
+
+    .side-link.menu-raemin{ color:#FFF3B0; }
+    .side-link.menu-raetim{ color:#C9706F; }
+  }
