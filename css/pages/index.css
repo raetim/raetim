@@ -147,3 +147,9 @@ footer .copyright{
     .gallery-item.disco-item{ width:min(180px, 100%); }
     .logo-slot{ width:160px; height:160px; }
   }
+
+/* 넓은 화면: 사이드바에 로고가 있으므로 메인화면의 큰 로고는 숨김 */
+@media (min-width:900px){
+    .hero{ height:9vh; min-height:70px; margin-bottom:0; padding-bottom:0; }
+    .logo-img{ display:none; }
+  }
