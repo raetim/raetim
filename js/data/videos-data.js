@@ -5,13 +5,13 @@
 //  title : 제목   date : 날짜 (최신순 정렬에 사용)   link : 영상 주소   image : 썸네일 이미지 경로
 window.VIDEOS = [
   {
-    title: "남겨진 질문 (Unanswered) MV",
+    title: "남겨진 질문 (Unanswered)",
     date: "2026.10.08",
     link: "https://www.youtube.com/watch?v=85y_rj9x7-s",
     image: "images/thumb-unanswered.jpg"
   },
   {
-    title: "새야 (Birds) MV",
+    title: "새야 (Birds)",
     date: "2026.10.08",
     link: "https://youtu.be/O1F0fBXNkLs?si=iqzYcG6KrRinkM3H",
     image: "images/thumb-birds.jpg"
