@@ -134,4 +134,21 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
       requestAnimationFrame(function () { body.classList.remove('no-anim'); });
     });
   }
+
+  /* 사이드바 현재 위치 표시: NEWS / DISCOGRAPHY */
+  var spy = [['news', document.getElementById('news')], ['discography', document.getElementById('discography')]];
+  function updateSpy() {
+    var cur = '';
+    if (state === 'content') {
+      var line = scroller.getBoundingClientRect().top + window.innerHeight * 0.4;
+      spy.forEach(function (s) { if (s[1] && s[1].getBoundingClientRect().top <= line) cur = s[0]; });
+      if (!cur) cur = 'news';
+    }
+    document.querySelectorAll('.side-link[href="#news"], .side-link[href="#discography"]').forEach(function (a) {
+      a.classList.toggle('is-current', a.getAttribute('href') === '#' + cur);
+    });
+  }
+  scroller.addEventListener('scroll', updateSpy, { passive: true });
+  new MutationObserver(updateSpy).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  updateSpy();
 })();

@@ -192,6 +192,10 @@ footer{
 
     .side-link.is-current{ opacity:1; text-decoration:underline; text-underline-offset:0.45em; }
 
+    body[data-site="raetim"] .side-link:not(.menu-raemin){ opacity:0.5; }
+    body[data-site="raetim"] .side-link:not(.menu-raemin):hover{ opacity:0.85; }
+    body[data-site="raetim"] .side-link.is-current:not(.menu-raemin){ opacity:1; color:#fff; text-decoration:none; }
+
     .side-link.menu-raemin{ color:#FFF3B0; }
     .side-link.menu-raetim{ color:#C9706F; }
   }
