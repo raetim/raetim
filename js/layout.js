@@ -91,15 +91,33 @@
   /* 로딩 화면: 모든 리소스가 불러와지면 서서히 사라짐 (최소 0.9초 유지) */
   var loader = document.getElementById('pageLoader');
   if (loader) {
-    var hideLoader = function () {
+    var hidden = false;
+    var doHide = function () {
+      if (hidden) return; hidden = true;
       var wait = Math.max(0, 900 - (window.performance ? performance.now() : 0));
       setTimeout(function () {
         loader.classList.add('hide');
         setTimeout(function () { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 800);
       }, wait);
     };
-    if (document.readyState === 'complete') hideLoader();
-    else window.addEventListener('load', hideLoader);
+    /* 글꼴과 페이지 안의 모든 이미지(자바스크립트로 나중에 붙는 것 포함)가 준비될 때까지 기다림 */
+    var imgsReady = function () {
+      var list = Array.prototype.slice.call(document.images).filter(function (im) { return !im.complete; });
+      return Promise.all(list.map(function (im) {
+        return new Promise(function (r) { im.addEventListener('load', r); im.addEventListener('error', r); });
+      }));
+    };
+    var waitAll = function () {
+      var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      fonts.then(imgsReady).then(function () {
+        setTimeout(function () {
+          imgsReady().then(doHide);   /* 한 번 더 확인: 뒤늦게 추가된 이미지 */
+        }, 150);
+      });
+    };
+    if (document.readyState === 'complete') waitAll();
+    else window.addEventListener('load', waitAll);
+    setTimeout(doHide, 12000);   /* 너무 오래 걸리면 그냥 열기 */
   }
 
   /* 메뉴 동작 */

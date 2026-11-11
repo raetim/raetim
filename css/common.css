@@ -214,7 +214,7 @@ footer{
     background:#5c93d8;
     opacity:1;
     transition:opacity .7s ease;
-    animation:loaderFailsafe .01s 8s forwards;   /* 자바스크립트가 실패해도 8초 뒤에는 사라짐 */
+    animation:loaderFailsafe .01s 15s forwards;   /* 자바스크립트가 실패해도 15초 뒤에는 사라짐 */
   }
 
 #pageLoader img{ width:min(240px, 56vw); height:auto; display:block; }
