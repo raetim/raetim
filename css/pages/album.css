@@ -41,7 +41,7 @@ main{
 .profile-social svg{ width:16px; height:16px; fill:#ffffff; }
 
 main{
-    max-width:480px;
+    max-width:600px;
     margin:0 auto;
     min-height:100vh;
     display:flex;
@@ -165,4 +165,9 @@ main{
 
 @media (max-width:480px){
     .album-card{ padding:1.8rem 1.4rem 1.4rem; }
+  }
+
+/* 크레딧 한 줄이 중간에서 끊기지 않게 (넓은 화면) */
+@media (min-width:620px){
+    .track-credits p{ white-space:nowrap; }
   }
