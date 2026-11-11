@@ -44,7 +44,7 @@ section{ padding:2rem 0 3.5rem; }
 
 #news{ padding-bottom:7rem; }
 
-#discography .car-btn{ display:none; }
+#music .car-btn{ display:none; }
 
 #discoDashes{ display:none; }
 
@@ -198,3 +198,74 @@ body[data-intro]:not(.in-content) .scroll-wrap{
 body.no-anim *{ transition:none !important; }
 
 body[data-intro].in-content .scroll-wrap{ transform:none; }
+
+
+/* ------------------------------------------------------------
+   VIDEO / PROFILE 섹션, 더보기 버튼
+------------------------------------------------------------ */
+.video-latest{
+    display:flex;
+    justify-content:center;
+    padding:0.4rem calc(30px + 0.8rem) 0;
+  }
+
+.video-latest .gallery-item{ width:min(640px, 100%); display:block; }
+
+.more-wrap{ display:flex; justify-content:center; margin-top:1.4rem; }
+
+.more-btn{
+    display:inline-block;
+    padding:0.35rem 1.5rem;
+    border:1px solid rgba(255,255,255,0.7);
+    border-radius:999px;
+    color:#ffffff;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    line-height:1.7;
+    transition:background .2s ease, color .2s ease;
+  }
+
+.more-btn:hover{ background:#ffffff; color:#4a78bd; }
+
+#video{ padding-bottom:5rem; }
+
+#profile{ padding-bottom:5rem; }
+
+.profile-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:2.6rem;
+    max-width:760px;
+    margin:0 auto;
+    padding:0 calc(30px + 0.8rem);
+  }
+
+.profile-photo{
+    flex:0 0 auto;
+    width:min(250px, 36%);
+    height:auto;
+    display:block;
+  }
+
+.profile-body{ flex:1; min-width:0; text-align:left; }
+
+.profile-name{
+    font-size:1.05rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    margin:0 0 0.9rem;
+  }
+
+.profile-intro{
+    font-size:0.82rem;
+    color:#ffffff;
+    margin:0 0 1.5rem;
+  }
+
+@media (max-width:620px){
+    .video-latest{ padding:0.4rem calc(22px + 0.3rem) 0; }
+    .profile-row{ flex-direction:column; gap:1.4rem; padding:0 1.4rem; }
+    .profile-photo{ width:min(240px, 62vw); }
+    .profile-body{ text-align:center; }
+  }

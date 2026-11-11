@@ -18,8 +18,9 @@
     raetim: [
       ['main', 'index.html', '', 'panel'],
       ['news', 'index.html#news', '', 'top'],
-      ['discography', 'index.html#discography', '', 'top'],
-      ['profile', 'profile.html', '', 'bottom'],
+      ['music', 'index.html#music', '', 'top', 'album.html'],
+      ['video', 'index.html#video', '', 'top', 'video.html'],
+      ['profile', 'index.html#profile', '', 'bottom', 'profile.html'],
       ['@raemin2scence', 'raemin2scence.html', 'menu-raemin', 'bottom']
     ],
     raemin: [
@@ -70,7 +71,7 @@
   var here = location.pathname.split('/').pop() || homeHref;
   function sideLinks(pos) {
     return MENUS[site].filter(function (m) { return m[3] === pos; }).map(function (m) {
-      var cur = m[1].indexOf('#') < 0 && m[1].split('?')[0] === here;
+      var cur = m[4] ? m[4] === here : (m[1].indexOf('#') < 0 && m[1].split('?')[0] === here);
       return '<a href="' + localize(m[1]) + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
         (cur ? ' is-current' : '') + '">' + m[0] + '</a>';
     }).join('');

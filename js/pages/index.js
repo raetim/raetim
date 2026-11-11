@@ -15,6 +15,19 @@
     }).join('');
 })();
 
+/* VIDEO: 가장 최신 비디오 1개 */
+(function () {
+  var box = document.getElementById('videoLatest');
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+  var v = window.VIDEOS.slice().sort(function (a, b) { return b.date.localeCompare(a.date); })[0];
+  if (!v) { box.parentNode.style.display = 'none'; return; }
+  box.innerHTML = '<a class="gallery-item" href="' + esc(v.link) + '" target="_blank" rel="noopener">' +
+    '<div class="thumb"><img src="' + esc(v.image) + '" alt="' + esc(v.title) + '">' +
+    '<div class="thumb-gradient"></div>' +
+    '<div class="thumb-cap"><span class="thumb-date">' + esc(v.date) + '</span>' +
+    '<span class="thumb-title">' + esc(v.title) + '</span></div></div></a>';
+})();
+
 initCarousel('newsScroll', 'newsDashes');
 initCarousel('discoScroll', 'discoDashes');
 
@@ -135,8 +148,8 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
     });
   }
 
-  /* 사이드바 현재 위치 표시: NEWS / DISCOGRAPHY */
-  var spy = [['news', document.getElementById('news')], ['discography', document.getElementById('discography')]];
+  /* 사이드바 현재 위치 표시: NEWS / MUSIC / VIDEO / PROFILE */
+  var spy = ['news', 'music', 'video', 'profile'].map(function (n) { return [n, document.getElementById(n)]; });
   function updateSpy() {
     var cur = '';
     if (state === 'content') {
@@ -144,7 +157,7 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
       spy.forEach(function (s) { if (s[1] && s[1].getBoundingClientRect().top <= line) cur = s[0]; });
       if (!cur) cur = 'news';
     }
-    document.querySelectorAll('.side-link[href="#news"], .side-link[href="#discography"]').forEach(function (a) {
+    document.querySelectorAll('.side-link[href^="#"]').forEach(function (a) {
       a.classList.toggle('is-current', a.getAttribute('href') === '#' + cur);
     });
   }
