@@ -194,6 +194,7 @@ footer{
 
     body[data-site="raetim"] .side-link:not(.menu-raemin){ opacity:0.5; }
     body[data-site="raetim"] .side-link:not(.menu-raemin):hover{ opacity:0.85; }
+    body[data-intro]:not(.in-content) .side-link:not(.menu-raemin),
     body[data-site="raetim"] .side-link.is-current:not(.menu-raemin){ opacity:1; color:#fff; text-decoration:none; }
 
     .side-link.menu-raemin{ color:#FFF3B0; }
