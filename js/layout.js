@@ -72,6 +72,10 @@
   function sideLinks(pos) {
     return MENUS[site].filter(function (m) { return m[3] === pos; }).map(function (m) {
       var cur = m[4] ? [].concat(m[4]).indexOf(here) >= 0 : (m[1].indexOf('#') < 0 && m[1].split('?')[0] === here);
+      if (cur && m[1].indexOf('type=') >= 0) {   /* works.html?type=mv / illust 는 종류까지 같아야 현재 위치 */
+        var want = (m[1].match(/type=(\w+)/) || [])[1];
+        cur = want === (new URLSearchParams(location.search).get('type') || 'mv');
+      }
       return '<a href="' + localize(m[1]) + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
         (cur ? ' is-current' : '') + '" data-key="' + m[0] + '">' + m[0] + '</a>';
     }).join('');
@@ -84,6 +88,8 @@
     '<div class="side-group side-group-bottom">' + sideLinks('bottom') + '</div>' +
     '</div></aside>';
   body.insertAdjacentHTML('afterbegin', html);
+  var sb = document.getElementById('siteSidebar');
+  if (sb && !sb.querySelector('.is-current')) sb.classList.add('side-none');
 
   /* 푸터: 스크롤 영역 맨 아래 */
   var wrap = document.querySelector('.scroll-wrap') || body;

@@ -54,3 +54,19 @@ body{
     color:inherit;
     cursor:pointer;
   }
+
+
+/* 사이드바: raetim 과 같은 디자인 (패널 배경 없이 로고와 글씨만, 지금 있는 곳만 진하게) */
+@media (min-width:900px){
+    .site-sidebar{
+        background:transparent;
+        pointer-events:none;
+      }
+    .site-sidebar a{ pointer-events:auto; }
+    .side-group{ align-items:flex-start; }
+    .site-sidebar .side-link{ text-shadow:0 0 10px rgba(255,255,255,0.7); }
+    body[data-site="raemin"] .side-link:not(.menu-raetim){ opacity:0.5; }
+    body[data-site="raemin"] .side-link:not(.menu-raetim):hover{ opacity:0.85; }
+    body[data-site="raemin"] .side-none .side-link,
+    body[data-site="raemin"] .side-link.is-current:not(.menu-raetim){ opacity:1; text-decoration:none; }
+  }
