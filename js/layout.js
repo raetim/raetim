@@ -17,10 +17,10 @@
   var MENUS = {
     raetim: [
       ['main', 'index.html', '', 'panel'],
-      ['news', 'index.html#news', '', 'top'],
-      ['music', 'index.html#music', '', 'top', 'album.html'],
-      ['video', 'index.html#video', '', 'top', 'video.html'],
-      ['profile', 'index.html#profile', '', 'bottom', 'profile.html'],
+      ['news', 'news.html', '', 'top'],
+      ['music', 'music.html', '', 'top', ['music.html', 'album.html']],
+      ['video', 'video.html', '', 'top'],
+      ['profile', 'profile.html', '', 'bottom'],
       ['@raemin2scence', 'raemin2scence.html', 'menu-raemin', 'bottom']
     ],
     raemin: [
@@ -71,9 +71,9 @@
   var here = location.pathname.split('/').pop() || homeHref;
   function sideLinks(pos) {
     return MENUS[site].filter(function (m) { return m[3] === pos; }).map(function (m) {
-      var cur = m[4] ? m[4] === here : (m[1].indexOf('#') < 0 && m[1].split('?')[0] === here);
+      var cur = m[4] ? [].concat(m[4]).indexOf(here) >= 0 : (m[1].indexOf('#') < 0 && m[1].split('?')[0] === here);
       return '<a href="' + localize(m[1]) + '" class="side-link' + (m[2] ? ' ' + m[2] : '') +
-        (cur ? ' is-current' : '') + '">' + m[0] + '</a>';
+        (cur ? ' is-current' : '') + '" data-key="' + m[0] + '">' + m[0] + '</a>';
     }).join('');
   }
   html += '<aside class="site-sidebar" id="siteSidebar">' +

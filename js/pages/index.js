@@ -15,6 +15,21 @@
     }).join('');
 })();
 
+/* NEWS 캐러셀: news-data.js 에서 carousel: true 인 것만 (최신순) */
+(function () {
+  var box = document.getElementById('newsScroll');
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+  box.innerHTML = window.NEWS.filter(function (n) { return n.carousel !== false; })
+    .sort(function (a, b) { return b.date.localeCompare(a.date); })
+    .map(function (n) {
+      return '<a class="gallery-item news-item" href="' + esc(n.link) + '" target="_blank" rel="noopener">' +
+        '<div class="thumb"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '">' +
+        '<div class="thumb-gradient"></div>' +
+        '<div class="thumb-cap"><span class="thumb-date">' + esc(n.date) + '</span>' +
+        '<span class="thumb-title">' + esc(n.title) + '</span></div></div></a>';
+    }).join('');
+})();
+
 /* VIDEO: 가장 최신 비디오 1개 */
 (function () {
   var box = document.getElementById('videoLatest');
@@ -157,8 +172,9 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
       spy.forEach(function (s) { if (s[1] && s[1].getBoundingClientRect().top <= line) cur = s[0]; });
       if (!cur) cur = 'news';
     }
-    document.querySelectorAll('.side-link[href^="#"]').forEach(function (a) {
-      a.classList.toggle('is-current', a.getAttribute('href') === '#' + cur);
+    document.querySelectorAll('.side-link[data-key]').forEach(function (a) {
+      if (a.classList.contains('menu-raemin')) return;
+      a.classList.toggle('is-current', a.getAttribute('data-key') === cur);
     });
   }
   scroller.addEventListener('scroll', updateSpy, { passive: true });

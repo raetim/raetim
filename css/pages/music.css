@@ -1,0 +1,12 @@
+/* music.html : 3열 N행 정사각 갤러리 */
+.music-grid{ grid-template-columns:repeat(3, 1fr); gap:0.8rem; }
+.music-grid .thumb{ aspect-ratio:1/1; }
+.music-grid .thumb-cap{ padding:0.45rem 0.55rem; }
+.music-grid .thumb-cap .thumb-title{ font-size:0.78rem; }
+
+@media (max-width:480px){
+    .music-grid{ grid-template-columns:repeat(3, 1fr); gap:0.5rem; }
+    .music-grid .thumb-cap{ padding:0.3rem 0.35rem; }
+    .music-grid .thumb-cap .thumb-title{ font-size:0.62rem; }
+    .music-grid .thumb-cap .thumb-date{ font-size:0.5rem; }
+  }
