@@ -164,19 +164,25 @@ footer .copyright{
     overflow:hidden;
     padding:0;
     background:#6195dc;
-    --mk:200%;
-    -webkit-mask-image:linear-gradient(to bottom, #000 calc(var(--mk) - 40%), transparent var(--mk));
-    mask-image:linear-gradient(to bottom, #000 calc(var(--mk) - 40%), transparent var(--mk));
-    transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1), --mk .08s linear;
+    transition:transform .95s cubic-bezier(.65, 0, .25, 1);
   }
 
-@property --mk{ syntax:'<percentage>'; inherits:false; initial-value:200%; }
+/* 사이드바 패널 배경: 인트로와 함께 위로 슬라이드 (글씨와 로고는 제자리) */
+.intro-panel{ display:none; }
 
 @media (min-width:900px){
-    .intro{ left:var(--side-w); }
+    .intro-panel{
+        display:block;
+        position:absolute;
+        top:0; left:0; bottom:0;
+        width:var(--side-w);
+        background:var(--side-bg);
+      }
   }
 
 .intro-img{
+    position:absolute;
+    top:0; left:0;
     width:100%;
     height:100%;
     object-fit:cover;
@@ -184,18 +190,22 @@ footer .copyright{
     display:block;
   }
 
+@media (min-width:900px){
+    .intro-img{ left:var(--side-w); width:calc(100% - var(--side-w)); }
+  }
+
 /* 세로 화면(모바일): 새 얼굴이 정확히 가운데 오도록 보정 */
 @media (max-aspect-ratio:1/1){
     .intro-img{ object-position:48.6% bottom; }
   }
 
-body.in-content .intro{ opacity:0; transform:translateY(-14vh); pointer-events:none; --mk:70%; }
+/* 슬라이드: 인트로는 위로 밀려 나가고, 메인 화면은 아래에서 함께 올라옴 */
+body.in-content .intro{ transform:translateY(-100%); pointer-events:none; }
 
-body[data-intro] .scroll-wrap{ transition:opacity .9s ease, transform .9s cubic-bezier(.45, 0, .2, 1); }
+body[data-intro] .scroll-wrap{ transition:transform .95s cubic-bezier(.65, 0, .25, 1); }
 
 body[data-intro]:not(.in-content) .scroll-wrap{
-    opacity:0;
-    transform:translateY(14vh);
+    transform:translateY(100vh);
     overflow-y:hidden;
     pointer-events:none;
   }

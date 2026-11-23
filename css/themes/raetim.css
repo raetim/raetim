@@ -74,11 +74,9 @@ body{
     .site-sidebar{
         background:transparent;
         pointer-events:none;
-        transition:background-color .9s ease;
       }
     .site-sidebar a{ pointer-events:auto; }
     .side-group{ align-items:flex-start; }
-    body[data-intro]:not(.in-content) .site-sidebar{ background:var(--side-bg); }
     .site-sidebar .side-link{ text-shadow:0 0 10px rgba(40,80,140,0.55); }
     .side-social{ right:28px; }
   }
