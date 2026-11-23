@@ -70,6 +70,10 @@ body{
 @media (min-width:900px){
     .site-bg{ left:0; }
 
+    /* 푸터 그라데이션이 사이드바 자리까지 화면 전체 폭으로 깔리게 (글씨는 내용 영역 가운데 유지) */
+    .scroll-wrap{ margin-left:0; padding-left:var(--side-w); box-sizing:border-box; }
+    footer{ margin-left:calc(-1 * var(--side-w)); padding-left:calc(6vw + var(--side-w)); }
+
     /* 사이드바 패널 배경은 첫 이미지 화면에서만. 그 외에는 글씨와 로고만 남김 */
     .site-sidebar{
         background:transparent;
