@@ -68,7 +68,18 @@ body{
   }
 
 @media (min-width:900px){
-    .site-bg{ left:var(--side-w); }
+    .site-bg{ left:0; }
+
+    /* 사이드바 패널 배경은 첫 이미지 화면에서만. 그 외에는 글씨와 로고만 남김 */
+    .site-sidebar{
+        background:transparent;
+        pointer-events:none;
+        transition:background-color .9s ease;
+      }
+    .site-sidebar a{ pointer-events:auto; }
+    .side-group{ align-items:flex-start; }
+    body[data-intro]:not(.in-content) .site-sidebar{ background:var(--side-bg); }
+    .site-sidebar .side-link{ text-shadow:0 0 10px rgba(40,80,140,0.55); }
     .side-social{ right:28px; }
   }
 
