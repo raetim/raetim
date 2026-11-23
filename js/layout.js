@@ -67,7 +67,7 @@
     return '<a href="' + localize(m[1]) + '" class="menu-link' + (m[2] ? ' ' + m[2] : '') + '">' + m[0] + '</a>';
   }).join('') + '</div>';
   /* 왼쪽 사이드바 (넓은 화면에서만 보임): 위쪽 = 메인 화면 안의 목록, 아래쪽 = 따로 열리는 화면 */
-  var logoSrc = site === 'raetim' ? 'images/logo-raetim.png' : 'images/logo-raemin2sence.png';
+  var logoSrc = site === 'raetim' ? 'images/logo-raetim.gif' : 'images/logo-raemin2sence.png';
   var here = location.pathname.split('/').pop() || homeHref;
   function sideLinks(pos) {
     return MENUS[site].filter(function (m) { return m[3] === pos; }).map(function (m) {

@@ -90,3 +90,6 @@ body{
 
 /* 메뉴 아이콘: 파란 배경 위에서는 흰색 */
 .menu-btn span{ background:#ffffff; }
+
+/* gif 로고는 살짝 아이보리라서 밝기만 올려 흰색에 가깝게 */
+img[src$="logo-raetim.gif"]{ filter:brightness(1.12); }
