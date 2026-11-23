@@ -63,7 +63,7 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
   var state = 'hero';          /* hero | content */
   var busy = false;
   var lastScroll = 0;
-  var DUR = 620;
+  var DUR = 520;
 
   function lock() { busy = true; setTimeout(function () { busy = false; }, DUR + 150); }
 

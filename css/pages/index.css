@@ -164,7 +164,7 @@ footer .copyright{
     overflow:hidden;
     padding:0;
     background:#6195dc;
-    transition:transform .6s cubic-bezier(.65, 0, .25, 1);
+    transition:transform .5s cubic-bezier(.22, .61, .36, 1);
   }
 
 /* 사이드바 패널 배경: 인트로와 함께 위로 슬라이드 (글씨와 로고는 제자리) */
@@ -202,7 +202,7 @@ footer .copyright{
 /* 슬라이드: 인트로는 위로 밀려 나가고, 메인 화면은 아래에서 함께 올라옴 */
 body.in-content .intro{ transform:translateY(-100%); pointer-events:none; }
 
-body[data-intro] .scroll-wrap{ transition:transform .6s cubic-bezier(.65, 0, .25, 1); }
+body[data-intro] .scroll-wrap{ transition:transform .5s cubic-bezier(.22, .61, .36, 1); }
 
 body[data-intro]:not(.in-content) .scroll-wrap{
     transform:translateY(100vh);
